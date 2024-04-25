@@ -1,0 +1,39 @@
+.containerDate{
+    width: 100%;
+}
+
+.form_date{
+    padding: 0 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input_date{
+    flex:  0 0 auto;
+    width: 50%;
+    height: 80px;
+    position: relative;
+}
+
+label{
+    font-size: 120%;
+}
+
+.imput-date2{
+    display: flex;
+}
+.input-date2 i{
+    width: 30px;
+    font-size: 180%;
+    color: rgb(0, 18, 103) ;
+}
+
+.input-date2 input{
+    width: 80%;
+    border-radius: 0.5em;
+    border:  solid 2px rgb(0, 18, 103) ;
+}
+
+form input[disabled]{
+    opacity: 0.5;
+    }

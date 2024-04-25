@@ -1,0 +1,227 @@
+<div class="containerTask component-margin">
+    <div class="bxslider">
+      <div><img src="assets/flor4.jpg"/></div>
+      <div><img src="assets/flor5.jpg"/></div>
+      <div><img src="assets/flor6.jpg"/></div>
+    </div>
+    
+    <h2 class="subtitulo_offer" style="width: 100%;color: rgb(0, 18, 103);;height: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEJORES OFERTAS %!!
+        <a class="show_more" style="color: white;" >VER MAS OFERTAS AQUÍ</a>
+    </h2>
+
+    <div class="Product-offer">
+        
+        <swiper-container  slides-per-view="auto" speed="500" loop="true" grab-cursor="true" navigation="true"autoplay-delay="2500">
+            @for (product of products; track $index) {
+              <swiper-slide><div class="component"> <div class="colCompo">
+                <div class="discountStiker">
+                    <span>{{product.discount}}%<br></span>
+                    <span class="dscto">&nbsp;Dscto</span>
+                </div>
+                <a [routerLink]="['/products',product.id]"style="text-decoration: none; color:#014f7c; text-align: center;">
+                @if (product.image) {<img src="{{url+'/product/getImage/'+ product.image}}"><br>}
+
+                <div class="name-component" ><strong>{{product.name}}</strong></div></a>
+                <div class="precios">
+                    <p style="margin: 3% 0% 0% 0%"><span class="discount">S/.{{product.discountedPrice}}</span></p>
+                    <h5 class="normalPrice" style="color: rgb(14, 47, 127); margin-bottom: 0%;">Normal:<span style="color: rgb(237, 87, 29); text-decoration: line-through;">S/.{{product.price}} </span></h5>
+                </div>
+               <div class="button-container">
+                 @if (product.status >0) {
+                    <button class="btn" (click)="addCard(product)"style="width: auto; font-size: 13px;background:#ed571d; color: white;">Agregar al carrito</button>
+                 }@else {
+                    <button class="btn" style="width: auto; font-size: 13px;;background:#ee1e1e;color: white;">Sin Stock</button>
+                 }
+                </div>   
+            </div>
+        </div></swiper-slide>
+              
+            }
+          </swiper-container>
+        
+        
+    </div>
+
+    <h2 class="subtitulo_offer2" style="width: 100%;height: 20%;border-bottom: solid 3px #0879ba; margin-top: 1%;">
+    </h2>
+
+    <div class="category-header">
+        <a class="category" [routerLink]="['/categorias/portatil']">
+            <div>
+                <img class="imageCategory" src="assets/category/ordenador-portatil.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">Portatiles</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/computadoras']">
+            <div>
+                <img class="imageCategory" src="assets/category/pc.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+                
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">PC</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/teclados']">
+            <div>
+                <img class="imageCategory" src="assets/category/teclado.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">Teclados</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/mouses']">
+            <div>
+                <img class="imageCategory" src="assets/category/mouse.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">Mouses</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/monitores']">
+            <div>
+                <img class="imageCategory" src="assets/category/monitor.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">Monitores</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/ram']">
+            <div>
+                <img class="imageCategory" src="assets/category/memoria-ram.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">RAM</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/discos duros']">
+            <div>
+                <img class="imageCategory" src="assets/category/ssd.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">Discos duros</h2>
+            </div>
+        </a>
+        <a class="category" [routerLink]="['/categorias/tarjetas graficas']">
+            <div>
+                <img class="imageCategory" src="assets/category/card.png" alt="logo" style="width: 100%; vertical-align: middle; height: 75px">
+            </div>
+            <div class="label-category">
+                <h2 style="color: white; font-size: 25px; font-weight: 500;">Graficas</h2>
+            </div>
+        </a>
+    </div>
+    
+    <div class="offer-category">
+        <h2 class="subtitulo_offer" style="width: 100%;color: rgb(0, 18, 103);;height: 20%;">&nbsp;&nbsp;&nbsp;OFERTAS PC  🖥️
+            <a class="show_more" style="color: white;" >VER MAS OFERTAS AQUÍ</a>
+        </h2>
+
+        <div class="Product-offer-portatil">
+            <swiper-container  slides-per-view="auto" speed="500" loop="true" grab-cursor="true" navigation="true">
+                @for (product of products; track $index) {
+                  <swiper-slide><div class="component"> <div class="colCompo2">
+                    <div class="discountStiker">
+                        <span>{{product.discount}}%<br></span>
+                        <span class="dscto">&nbsp;Dscto</span>
+                    </div>
+                    <a [routerLink]="['/products',product.id]"style="text-decoration: none; color:#014f7c; text-align: center;">
+                    @if (product.image) {<img src="{{url+'/product/getImage/'+ product.image}}"><br>}
+    
+                    <div class="name-component" ><strong>{{product.name}}</strong></div></a>
+                    <div class="precios">
+                        <p style="margin: 3% 0% 0% 0%"><span class="discount">S/.{{product.discountedPrice}}</span></p>
+                        <h5 class="normalPrice" style="color: rgb(14, 47, 127); margin-bottom: 0%;">Normal:<span style="color: rgb(237, 87, 29); text-decoration: line-through;">S/.{{product.price}} </span></h5>
+                    </div>
+                    
+                   <div class="button-container">
+                     @if (product.status >0) {
+                        <button (click)="addCard(product)" class="btn btn-resumen4" style="width: auto; font-size: 13px;background:#ed571d; color: white;">Agregar al carrito</button>
+                     }@else {
+                        <button class="btn btn-resumen4" style="width: auto; font-size: 13px;;background:#ee1e1e;color: white;">Sin Stock</button>
+                     }
+                    </div>   
+                </div>
+            </div></swiper-slide>
+                  
+                }
+              </swiper-container>
+        </div>
+    </div>
+
+    <div class="offer-category">
+        <h2 class="subtitulo_offer" style="width: 100%;color: rgb(0, 18, 103);;height: 20%;">&nbsp;&nbsp;&nbsp;OFERTAS PORTATILES 💻 
+            <a class="show_more" style="color: white;" >VER MAS OFERTAS AQUÍ</a>
+        </h2>
+
+        <div class="Product-offer-portatil">
+            <swiper-container  slides-per-view="auto" speed="500" loop="true" grab-cursor="true" navigation="true">
+                @for (product of products; track $index) {
+                  <swiper-slide><div class="component"> <div class="colCompo2">
+                    <div class="discountStiker">
+                        <span>{{product.discount}}%<br></span>
+                        <span class="dscto">&nbsp;Dscto</span>
+                    </div>
+                    <a [routerLink]="['/products',product.id]"style="text-decoration: none; color:#014f7c; text-align: center;">
+                    @if (product.image) {<img src="{{url+'/product/getImage/'+ product.image}}"><br>}
+    
+                    <div class="name-component" ><strong>{{product.name}}</strong></div></a>
+                    <div class="precios">
+                        <p style="margin: 3% 0% 0% 0%"><span class="discount">S/.{{product.discountedPrice}}</span></p>
+                        <h5 class="normalPrice" style="color: rgb(14, 47, 127); margin-bottom: 0%;">Normal:<span style="color: rgb(237, 87, 29); text-decoration: line-through;">S/.{{product.price}} </span></h5>
+                    </div>
+                    <div class="button-container">
+                     @if (product.status >0) {
+                        <button (click)="addCard(product)" class="btn btn-resumen4" style="width: auto; font-size: 13px;background:#ed571d; color: white;">Agregar al carrito</button>
+                     }@else {
+                        <button class="btn btn-resumen4" style="width: auto; font-size: 13px;;background:#ee1e1e;color: white;">Sin Stock</button>
+                     }
+                    </div>
+                </div>
+            </div></swiper-slide>
+                  
+                }
+              </swiper-container>
+        </div>
+    </div>
+
+    <div class="offer-category">
+        <h2 class="subtitulo_offer" style="width: 100%;color: rgb(0, 18, 103);;height: 20%;">&nbsp;&nbsp;&nbsp;OFERTAS MONITORES 🖥️
+            <a class="show_more" style="color: white;" >VER MAS OFERTAS AQUÍ</a>
+        </h2>
+
+        <div class="Product-offer-portatil">
+            <swiper-container  slides-per-view="auto" speed="500" loop="true" grab-cursor="true" navigation="true">
+                @for (product of products; track $index) {
+                  <swiper-slide><div class="component"> <div class="colCompo2">
+                    <div class="discountStiker">
+                        <span>{{product.discount}}%<br></span>
+                        <span class="dscto">&nbsp;Dscto</span>
+                    </div>
+                    <a [routerLink]="['/products',product.id]"style="text-decoration: none; color:#014f7c; text-align: center;">
+                    @if (product.image) {<img src="{{url+'/product/getImage/'+ product.image}}"><br>}
+    
+                    <div class="name-component" ><strong>{{product.name}}</strong></div></a>
+                    <div class="precios">
+                        <p style="margin: 3% 0% 0% 0%"><span class="discount">S/.{{product.discountedPrice}}</span></p>
+                        <h5 class="normalPrice" style="color: rgb(14, 47, 127); margin-bottom: 0%;">Normal:<span style="color: rgb(237, 87, 29); text-decoration: line-through;">S/.{{product.price}} </span></h5>
+                    </div>
+                    <div class="button-container">
+                     @if (product.status >0) {
+                        <button (click)="addCard(product)" class="btn btn-resumen" style="width: auto; font-size: 13px;background:#ed571d; color: white;">Agregar al carrito</button>
+                     }@else {
+                        <button class="btn btn-resumen2" style="width: auto; font-size: 13px;;background:#ee1e1e;color: white;">Sin Stock</button>
+                     }
+                    </div> 
+                </div>
+            </div></swiper-slide>
+                  
+                }
+              </swiper-container>
+        </div>
+    </div>
+  </div>
+  <app-fooder></app-fooder>
+  
+  

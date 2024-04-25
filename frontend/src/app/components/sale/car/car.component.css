@@ -1,0 +1,280 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+    width: 100%;
+  }
+  
+ .stepper{
+    margin: 120px 0;
+  }
+
+::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none;
+    } 
+    
+.title{
+    margin: 60px 0;
+    text-align: center;
+    color: rgb(0, 18, 103);
+    width: 100%;
+    border-bottom: solid 3px rgb(0, 18, 103); ;
+}
+
+h1{
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.head-table{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 18, 103);
+    font-size: 130%;
+}
+
+.colHead{
+    flex: 0 0 auto;
+    width: 18.465%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.table-items {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    
+}
+
+.body-table{
+    justify-content: center;
+    align-items: center;
+}
+
+.numberAdd{
+    width: 25%;
+    text-align: center;
+    border: solid 2px rgb(0, 18, 103);
+    border-radius: 0.4em;
+    font-size: 130%;
+    font-weight: 500;
+   }
+
+/* paso3 */
+.cuentas{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4% 0 3%;
+
+}
+
+.cuentaInfo{
+    display: 0 0 auto;
+    width: 25%;
+    padding: 0 2%;
+    text-align: center;
+}
+
+.cuentaInfo img{
+    width: 100%;
+    padding: 0 10%;
+}
+
+.textCuenta{
+    display: block;
+}
+.btn_cuenta {
+    height: 40px;
+}
+.btn_cuenta button{
+  width: 20%;
+  margin: 0 5%;
+  height: 100%;
+  border: transparent;
+  border-radius: 0.7em;
+}
+
+.btn_cuenta button:hover{
+    height: 130%;
+    width: 25%;
+    transition: 0.5s;
+}
+
+@media(max-width:1199px) {
+    .numberAdd{
+        width: 40%;
+    }
+}
+@media(max-width:767px) {
+    .head-table{
+        width: 150%;
+    }
+    .body-table{
+        width: 150%;
+    }
+    .numberAdd{
+        width: 50%;
+    }
+    .cuentaInfo{
+        display: 0 0 auto;
+        width: 100%;
+        padding: 0 2%;
+        text-align: center;
+    }
+    .btn_cuenta button{
+        width: 40%;
+      }
+}
+
+@media(max-width:450px) {
+    .container{
+        padding: 0px;
+    }
+    .head-table{
+        width: 250%;
+    }
+    .body-table{
+        width: 250%;
+    }
+    .numberAdd{
+        width: 40%;
+    }
+
+        
+}
+
+.empty{
+    text-align: center;
+    font-size: 160%;
+    margin-top: 30%;
+    font-weight: 500;
+}
+
+th img {
+    width:50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 6%;
+}
+
+.colBody{
+    flex: 0 0 auto;
+    width: 18%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: solid 1px #0879ba;
+    border-top: solid 1px #0879ba;
+    padding: 5px;
+    color:rgba(71, 71, 71, 0.812);
+}
+
+.body-table{
+    border-spacing: 0 15px;
+}
+
+
+
+.cantidad button{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(199, 0, 0);
+    background: transparent;
+    border: transparent;
+}
+
+
+.total{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.total button{ 
+    border: transparent;
+    background: rgb(0, 24, 145);
+    color:white;
+    font-size: 110%;
+}
+
+.total h2{
+    color: rgb(0, 18, 103);
+    font-size: 130%;
+    border-top: #0879ba solid 1px;
+}
+
+.total button[disabled]{
+    opacity: 0.5;
+}
+
+.containerEnvio{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+}
+.col-resumen{
+    flex: 0 0 auto;
+    width: 50%;
+}
+@media(max-width:991px){
+    .col-resumen{
+        flex: 0 0 none;
+        width: 100%;
+    }
+}
+
+mat-form-field{
+    padding: 5px;
+    width: 100%
+}
+
+.Resumen{
+    text-align: center;
+    width: 100%;
+}
+
+.title-name-detalle{
+    width: 100%;
+    font-size: 19px;
+}
+.form-select{
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border: solid 1px rgb(0, 18, 103);
+    border-radius: 0.5rem;
+}
+select{
+ text-transform: none;
+ text-decoration: none;
+ font-style: none;
+}
+.productResumen{
+    width: 100%;
+    background: #f3f3f3;
+}
+.containerResumen{
+    display: flex;
+}
+.imgResumen{
+    width: 30%;
+}
+.imgResumen img{
+width: 100%;
+padding: 7%;
+}
+.dataResumen{
+    width: 70%;
+    padding-top: 5%;
+}
+.totalResumen{
+    font-size: 25px;
+    margin-top: 7%;
+    padding: 0 7%;
+    color:rgb(0, 18, 103);
+}
+
+

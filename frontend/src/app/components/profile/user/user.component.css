@@ -1,0 +1,83 @@
+.headerUser{
+    width: 100%;
+    margin-top: 120px;
+    border: solid 4px rgb(0, 18, 103);
+    border-radius: 0.8em;
+    display: flex;
+}
+
+
+.welcome{
+  margin: 4%;
+  color: rgb(0, 18, 103) ;
+  text-align: center;
+}
+
+.welcome h1{
+    font-size: 300%; 
+    font-weight: 900;
+}
+.welcome h2{
+    font-size: 250%;
+    font-weight: 500;
+}
+
+.points{
+    margin: 4%;
+    text-align: center;
+    color: #df933c;
+}
+
+.points h3{
+    font-size: 150%;
+    font-weight: 500;
+}
+.points span{
+    font-size: 500%;
+}
+
+.menuDate{
+    width: 20%;
+    background: #ececec;
+    min-height: 200px;
+}
+.children{
+    width: 80%;
+}
+
+ul{
+    padding: 0;
+}
+.menuDate li{
+    list-style: none;
+    height: 50px;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 150%;
+    font-weight: 500;
+    color:rgb(0, 18, 103);
+    flex-wrap: wrap;
+}
+
+.menuDate ul :hover{
+    background: #df933c;
+}
+
+@media(max-width:1138px){
+    .headerUser{
+        margin-top: 160px;
+    }
+}
+
+@media(max-width:450px){
+    .headerUser{
+        margin-top: 110px;
+    }
+    .menuDate li{
+        font-size: 90%;
+        padding-top: 10px;
+    }
+    .container{
+        padding: 0 2%;
+    }
+}

@@ -1,0 +1,234 @@
+.category-header{
+    display: flex;
+    height: 75px;
+    margin-top: 30px;
+}
+
+.category{
+    position: relative; 
+    text-decoration: none;
+    width: 15%;
+    background-color: #979797;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.category:hover{
+    transform: translateY(-30%);
+    transition: transform 1s ease;
+    background-color: #0879ba;
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    height: 100px;
+}
+
+.label-category {
+    display: none; /* Inicialmente oculto */
+    position: absolute; /* Posicionamiento absoluto con respecto al div .category */
+    bottom: -20px; /* Distancia desde la parte inferior del div .category */
+    width: 100%; /* Ancho completo */
+    text-align: center; /* Centrar texto */
+}
+
+.category:hover .label-category {
+    display: block; /* Mostrar cuando se hace hover en .category */
+}
+ 
+.category:hover .imageCategory {
+    transform: translateY(-15%); /* Movemos la imagen hacia abajo un 10% */
+}
+
+.imageCategory {
+    width: 100%;
+    vertical-align: middle;
+    height: 75px;
+    transition: transform 0.5s ease; /* Agregamos la misma transición para la imagen */
+}
+
+@media(max-width:760px){
+    .category-header{
+        display: none;
+    }
+}
+
+.Product-offer {
+    position: relative;
+    height: 450px;
+  }
+
+  .Product-offer {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .component img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 6%;
+}
+
+.discount{
+  font-size: 18px;
+  background: rgb(0, 18, 103);
+  padding: 1% 4%;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+}
+
+.discountStiker{
+  background: rgb(0, 18, 103);
+  width: 25%;
+  height: 9%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  border-radius: 0em 1.5em 0em 5em;
+  color: white;
+  font-size: 160%;
+  padding: 2% 0% 0% 8%;
+  font-weight: 700;
+}
+
+.name-component {
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-left: 5%;
+  padding-right: 5%;
+  /*text-overflow: ellipsis; /* Agregapuntos suspensivos (...) si el texto es demasiado largo */ 
+}
+
+
+
+.dscto {
+  font-size: 60%; /* Tamaño del texto */
+  display: block; /* Para que aparezca en una nueva línea */
+  margin-top: -6px; /* Espacio superior */
+}
+  
+swiper-slide{
+  width: 300px;
+} 
+
+.Product-offer-portatil swiper-slide{
+  width: 20%;
+  border: solid 5px ;
+  border-radius: 5%;
+  margin: 0 2%;
+}
+
+.colCompo2{
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100%; /* Ajusta la altura del contenedor para centrar los botones verticalmente */
+}
+
+.precios{
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100%; /* Ajusta la altura del contenedor para centrar los botones verticalmente */
+  text-align: center;
+}
+
+.precios p {
+  margin: 0%;
+}
+@media (max-width: 1350px){
+  swiper-slide{
+    width: 200px;
+  } 
+  .Product-offer {
+    height: 375px;
+  }
+  .discountStiker{
+    font-size: 130%;
+    padding: 0.1% 20% 0% 8%;
+  }
+  .dscto{
+    margin-top: -8px; /* Espacio superior */
+  }
+
+  .Product-offer-portatil swiper-slide{
+    width: 30%;
+    margin: 0 2%;
+  }
+}
+
+@media(max-width:450px){
+  
+  swiper-slide{
+    width: 50%;
+    font-size: 90%;
+  } 
+  .Product-offer {
+    height: 340px;
+  }
+
+  .discountStiker{
+    font-size: 120%;
+    padding: 0.5% 20% 0% 8%;
+  }
+  .Product-offer-portatil swiper-slide{
+    width: 48%;
+    margin: 0 0.5%;
+    border: solid 0px ;
+  }
+  .discountStiker{
+    border-radius: 0em 1em 0em 5em;
+  }
+
+}
+
+.offer-category{
+  width: 100%;
+  font-family: "Comfortaa", sans-serif;
+}
+
+.subtitulo_offer{
+  margin-top: 35px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #0879ba;
+  margin-bottom: 6%;
+}
+  
+h2{
+  font-size: 2.2em;
+  font-weight: 500;
+  
+}
+
+.show_more{
+  width: auto;
+  font-size: 14px;
+  background: #ed1d1d;
+  border: 0px;
+  float: right;
+  border-radius: 0.4em;
+  margin-right: 2%;
+  height: 40px;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 4px;
+  cursor: pointer;
+}
+
+.show_more:hover{
+  background: #0879ba;
+  font-size: 14.5px;
+}

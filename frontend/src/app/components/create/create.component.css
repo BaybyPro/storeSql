@@ -1,0 +1,31 @@
+.required{
+    background-color: red;
+}
+
+span{
+    color: red;
+    font-size: 12px;
+}
+
+form input[disabled]{
+opacity: 0.5;
+}
+.success{
+    width: 38%;
+   padding: 5px;
+   margin: 5px;
+   border: 1px solid #eee;
+   background: rgb(45, 182, 45);
+   color: white;
+   
+}
+
+
+.button-close{
+    background: rgb(45, 182, 45);
+    border: 0px;
+}
+
+label{
+    font-weight: bold;
+}

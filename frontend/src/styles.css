@@ -1,0 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.black-snackbar {
+    background: rgb(255, 136, 0) !important;
+    color: white !important;
+    padding-top: 3px;
+    border-radius: 5%;
+  }
+
+  .green-snackbar {
+    background: #32CD32 !important;
+    color: white !important;
+    padding-top: 3px;
+    border-radius: 5%;
+  }
+
+
+  .component-margin {
+    margin-top: 70px; /* Ajusta según sea necesario */
+    min-height: 100%;
+  }
+
+  .component-margin2 {
+    margin-top: 7%; /* Ajusta según sea necesario */
+    min-height: 100%;
+  }
+
+  @media(max-width:1138px) {
+    .component-margin {
+      margin-top: 140px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 150px; /* Ajusta según sea necesario */
+    }
+  }
+
+  @media(max-width:900px) {
+    .component-margin {
+      margin-top: 140px; /* Ajusta según sea necesario */
+    }
+
+    .component-margin2 {
+      margin-top: 180px; /* Ajusta según sea necesario */
+    }
+  }
+
+  @media(max-width:450px) {
+    .component-margin {
+      margin-top: 80px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 90px; /* Ajusta según sea necesario */
+    }
+  }
+
+  @media(max-width:450px) and (min-height:800px) {
+    .navbar{
+        height: 8.7%;
+    }
+    .component-margin {
+      margin-top: 70px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 80px; /* Ajusta según sea necesario */
+    }
+  }
+  @media(max-width:950px) and (max-height:1025px) {
+    .component-margin {
+      margin-top: 120px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 80px; /* Ajusta según sea necesario */
+    }
+  }
+
+  @media(max-width:1025px) and (max-height:1025px) {
+    .component-margin {
+      margin-top: 110px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 80px; /* Ajusta según sea necesario */
+    }
+  }
+
+
+
+
+  @media(max-width:950px) and (max-height:450px) {
+    .component-margin {
+      margin-top: 59px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 80px; /* Ajusta según sea necesario */
+    }
+  }
+
+  @media(max-width:450px) and (max-height:1025px) {
+    .component-margin {
+      margin-top: 78px; /* Ajusta según sea necesario */
+    }
+    .component-margin2 {
+      margin-top: 90px; /* Ajusta según sea necesario */
+    }
+  }

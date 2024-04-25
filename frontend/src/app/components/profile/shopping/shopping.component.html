@@ -1,0 +1,55 @@
+<div class="container-pay p-2">
+    <mat-accordion>
+        @for (sale of sales; track $index) {
+            <mat-expansion-panel (click)="getSaleProduct(sale.id_sale)">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                     {{sale.id_sale}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    @if (sale.pay=='true') {
+                        <strong style="color: rgb(0, 189, 63);">Pagado</strong>
+                    }@else {
+                        <strong style="color: rgb(255, 62, 62);"> No pagado</strong>
+                    }
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                  <div class="table-pay">
+                      <div class="head-table">
+                          <thead>
+                              <tr>
+                                  <th class="colHead">Imagen</th>
+                                  <th class="colHead">Producto</th>
+                                  <th class="colHead">Cantidad</th>
+                                  <th class="colHead">Sub Total</th>
+                              </tr>
+                          </thead>
+                      </div>
+                      <div class="body-table">
+                          <tbody>
+                            @for (product of salesProduct; track $index) {
+                                <tr>
+                                    <th class="colBody"
+                                    style="border-left: 1px solid #0879ba; border-top-left-radius: 14px; border-bottom-left-radius: 14px;">
+                                    <img src="{{url+'/product/getImage/'+ product.image}}"></th>
+                                    <th class="colBody name-product">{{product.product}}</th>
+                                    <th class="colBody">{{product.count}}</th>
+                                    <th class="colBody"
+                                    style="border-right: 1px solid #0879ba; border-top-right-radius: 14px; border-bottom-right-radius: 14px;">
+                                    {{product.price * product.count}}.00 S/.</th>
+                                </tr>
+                            }@empty {
+                            <div class="empy">NO HAY PRODUCTOS</div>
+                            }
+                          </tbody>
+                      </div>
+                      <div class="total">
+                        <h2>Total : {{totalPrice}}.00 S/.</h2>
+                    </div>
+                    </div>
+               </mat-expansion-panel>
+        }@empty {
+            <h2>no hay</h2>
+        }
+    </mat-accordion>
+</div>

@@ -1,0 +1,102 @@
+<div class="detail-container component-margin">
+   
+    <div class="imagen">
+        <div class="colum-image">
+            <img src="{{url+'/product/getImage/'+ compo.image}}" (click)="showImage(compo.image)">
+            @if (compo.image2 != "Imagen 2 no subida...") {<img src="{{url+'/product/getImage/'+ compo.image2}}" (click)="showImage(compo.image2)">}
+            @if (compo.image3 != "Imagen 3 no subida...") {<img src="{{url+'/product/getImage/'+ compo.image3}}" (click)="showImage(compo.image3)">}
+        </div>
+        <div class="imagen">
+            
+            @if (compo.image) {
+                <img src="{{url+'/product/getImage/'+ selectedImage}}">
+            }
+        </div>
+    </div>
+  <div class="dataCompo">
+    <div><h1><strong>{{compo.name}}</strong></h1></div>
+    <div><h2><strong>ID:</strong>{{compo.id}}</h2></div>
+    <div><h2>{{compo.categoryName}}</h2></div>
+    <div><h3><strong>Normal S/.</strong>&nbsp;{{compo.price}}.00</h3></div>
+    <div><h3><strong>Descuento</strong>&nbsp;-{{compo.discount}}%</h3></div>
+    <div><h3><strong>S/.</strong>&nbsp;{{discount}}.00</h3></div>
+    <div><strong>STOCK</strong>&nbsp;&nbsp;{{compo.status}}</div>
+    @if (!confirm) {
+        <div class="buttons2" style="margin: 5% 5% 5% 0;">
+            <button [routerLink]="['/edit',compo.id]" mat-icon-button style="color: rgb(16, 16, 168);" matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+            <button (click)="setConfirm(true)" mat-icon-button style="color: rgb(168, 34, 16); margin-left: 10%;" matTooltip="Edit"><mat-icon>delete</mat-icon></button>
+        </div>
+    }@else {
+        <div class="buttons" style="margin: 5% 5% 5% 0;">
+        <div id="spanConfirm"><span>¿Estas seguro de borrar este componente?</span></div>
+        <button (click)="setConfirm(false)" class="buttonCancel">Cancelar</button>
+        <button (click)="deleteCompo(compo.id)" class="buttonConfirm">Confirmar</button>
+    </div>
+    }
+</div>
+
+</div>
+<div class="description" style="margin-left: 7%;">
+    <form [formGroup]="descriptionform">
+    <div fxFlex fxLayout="column">
+        <mat-form-field appearance="fill" fxFlex style="width: 90%;">
+          <mat-label>Agregar descripción</mat-label>
+          <input matInput formControlName="description" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="Submit()" [disabled]="!(descriptionform.valid && descriptionform.dirty)">ADD</button>
+    </div>
+    </form>
+</div>
+
+@if (EditDescription) {
+    <div class="description" style="margin-left: 7%;">
+        <form [formGroup]="editform">
+        <div fxFlex fxLayout="column">
+            <mat-form-field appearance="fill" fxFlex style="width: 90%;">
+              <mat-label>Editar descripción</mat-label>
+              <input matInput formControlName="descriptionEdit" required>
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="SubmitEdit()" [disabled]="!(editform.valid && editform.dirty)">Editar</button>
+        </div>
+        </form>
+    </div>
+}
+
+<div class="responsible_table">
+    @if (confirm2) {
+        <div class="confirm">
+            <mat-toolbar color="warn">
+                <mat-toolbar-row>
+                    <div></div>
+                    <span class="title-center">Esta seguro de borrar la descripción:<br><p style="color: rgb(235, 46, 21); text-transform: uppercase;">{{nameDescription}}</p></span>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <div class="confirm2">
+                <button color="warn" mat-raised-button (click)="deleteConfirm()">Confirmar</button>
+                <button mat-raised-button (click)="closeConfirm()">cerrar</button>
+            </div>
+        </div>
+    }
+    <table mat-table [dataSource]="dataSource" class="mat-evevation-z8">
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef="">Descripción</th>
+            <td style="text-align: center;" mat-cell *matCellDef="let element" >{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action</th>
+            <td mat-cell *matCellDef="let element" class="action-link"><button mat-icon-button color="primary" matTooltip="Edit" (click)="Edit(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" matTooltip="Edit" (click)="deleteDescription(element)">
+                <mat-icon>delete</mat-icon>
+            </button></td>
+            
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true">  </tr>
+            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+    </table>
+
+</div>

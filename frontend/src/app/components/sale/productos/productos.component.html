@@ -1,0 +1,63 @@
+<div class="detail-container component-margin">
+    <div class="image-container">
+        <div class="colum-image">
+            <img src="{{url+'/product/getImage/'+ compo.image}}" (click)="showImage(compo.image)">
+            @if (compo.image2 != "Imagen 2 no subida...") {<img src="{{url+'/product/getImage/'+ compo.image2}}" (click)="showImage(compo.image2)">}
+            @if (compo.image3 != "Imagen 3 no subida...") {<img src="{{url+'/product/getImage/'+ compo.image3}}" (click)="showImage(compo.image3)">}
+        </div>
+        <div class="imagen">
+            <div class="discount">
+                <span class="discountText">-{{compo.discount}}</span>
+                <span class="dscto">%</span>
+            </div>
+            @if (compo.image) {
+                <img src="{{url+'/product/getImage/'+ selectedImage}}">
+            }
+        </div>
+       </div>
+  <div class="dataCompo">
+    <div class="producName" >{{compo.name}}</div>
+    @if (compo.status > 0) {
+        <div style="color: rgb(35, 190, 105);"><h2><strong>STOCK:&nbsp;{{compo.status}}</strong></h2></div>
+    }@else {<div style="color: brown;"><h2><strong>SIN STOCK 🥺</strong></h2></div>}
+    <div class="infoPay">
+        
+    <div class="compoName"><span><strong>S/.</strong>&nbsp;{{discount}}.00</span></div>
+    <h5 class="normalPrice" style="color: rgb(14, 47, 127); margin: 2%;font-size: 120%;">Normal:<span style="color: rgb(237, 87, 29); text-decoration: line-through;">S/.{{compo.price}}.00 </span></h5>
+    <div><h2><strong>Categoría:&nbsp;</strong><a [routerLink]="['/categorias',compo.categoryName]">{{compo.categoryName}}</a></h2></div>
+  
+    <div class="buttons2" style="margin: 5% 5% 5% 2%;">
+        <div class="cantidad">
+            <p>Cantidad</p>
+            <input class="numberAdd" type="number" min="1" [max]="compo.status" [(ngModel)]="cantidad">
+        </div>
+        <button class="btn btn-resumen" 
+                style="width: auto; font-size: 15px;background:#ed571d; color: white;font-weight: 500;" 
+                [disabled]="!cantidad || cantidad < 1 || cantidad > compo.status"
+                (click)="addCard(compo,discount,cantidad)">
+            COMPRAR
+        </button>
+    </div>
+    </div>
+ </div>
+ <h2 class="subtitulo_offer" style="width: 100%;color: rgb(0, 18, 103);;height: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    DESCRIPCIÓN DEL PRODUCTO
+ </h2>
+
+ <div class="detail">
+    <table>
+        <tbody>
+
+            @for (description of descriptions; track $index) {
+                <tr>
+                    <td class="title-caracteristicas">{{description.key}}</td>
+                    <td class="subtitle-description">{{description.value}}</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<app-fooder></app-fooder>

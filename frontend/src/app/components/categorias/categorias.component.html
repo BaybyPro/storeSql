@@ -1,0 +1,43 @@
+<div class="container component-margin2">
+    <h2 class="subtitulo_offer" style="width: 100%;color: rgb(0, 18, 103);;height: 20%;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @if (categotyTitle ==="portatil"){PORTATILES 💻}
+    </h2>
+
+    <div class="body-component">
+
+        @for (product of products; track $index) {
+        <div class="component">
+            <div class="colCompo">
+                @if(product.discount > 0){
+                <div class="discountStiker">
+                    <span>{{product.discount}}%<br></span>
+                    <span class="dscto">&nbsp;Dscto</span>
+                </div>
+                }
+                <a [routerLink]="['/products',product.id]" style="text-decoration: none; color:#014f7c">
+                    @if (product.image) {<img src="{{url+'/product/getImage/'+ product.image}}"><br>}
+                    <div class="name-component"><strong>{{product.name}}</strong></div>
+                </a>
+                <div class="precios">
+                    <p style="margin: 3% 0% 0% 0%"><span class="discount">S/.{{product.discountedPrice}}</span></p>
+                    <h5 class="normalPrice" style="color: rgb(14, 47, 127); margin-bottom: 0%;">Normal:<span
+                            style="color: rgb(237, 87, 29); text-decoration: line-through;">S/.{{product.price}} </span>
+                    </h5>
+                </div>
+
+                <div class="button-container">
+                    @if (product.status >0) {
+                    <button (click)="addCard(product)" class="btn"
+                        style="width: auto; font-size: 13px;background:#ed571d; color: white;">Agregar al
+                        carrito</button>
+                    }@else {
+                    <button class="btn" style="width: auto; font-size: 13px;;background:#ee1e1e;color: white;">Sin
+                        Stock</button>
+                    }
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

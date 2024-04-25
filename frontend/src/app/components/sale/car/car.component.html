@@ -1,0 +1,320 @@
+<div class="container component-margi">
+    <mat-stepper [linear]="true" #stepper class="stepper">
+        <mat-step class="stepHeader" [editable]="false">
+            <ng-template matStepLabel>Carrito</ng-template>
+            <div class="title">
+                <h1>CARRITO</h1>
+            </div>
+            <div class="table-items">
+                <div class="head-table">
+                    <thead>
+                        <tr>
+                            <th class="colHead">Imagen</th>
+                            <th class="colHead">Producto</th>
+                            <th class="colHead">Precio Nomal</th>
+                            <th class="colHead">Precio final</th>
+                            <th class="colHead">Cantidad</th>
+                            <th class="colHead">Sub Total</th>
+                        </tr>
+                    </thead>
+                </div>
+                <div class="body-table">
+                    <tbody>
+                        @for (item of listItemsCar; track $index) {
+                        <tr>
+                            <th class="colBody"
+                                style="border-left: 1px solid #0879ba; border-top-left-radius: 14px; border-bottom-left-radius: 14px;">
+                                <img src="{{url+'/product/getImage/'+ item.image}}">
+                            </th>
+                            <th class="colBody">{{item.name}}</th>
+                            <th class="colBody" style="text-decoration: line-through">{{item.price}}.00 S/.</th>
+                            <th class="colBody"><span
+                                    style="background: rgb(0, 24, 145); padding: 4%; border-radius: 8px; color: white; font-size: 14px;">{{item.discountedPrice}}.00
+                                    S/.</span></th>
+                            <th class="colBody">
+                                <div class="cantidad">
+
+                                    <button style="color: #0879ba; float: left;"
+                                        (click)="updateProduct(countInput.value,item.id,item.status)">
+                                        <i class="fa fa-retweet" aria-hidden="true"></i>
+                                    </button>
+                                    <input class="numberAdd" #countInput type="number" min="1" [max]="item.status"
+                                        [(ngModel)]="item.count"
+                                        (ngModelChange)="validateCountInput(item.count,item.status)" required>
+                                    <button style="float: right;" (click)="deleteProduct(item.id) ">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+
+                                </div>
+                            <th>
+                            <th class="colBody"
+                                style="border-right: 1px solid #0879ba; border-top-right-radius: 14px; border-bottom-right-radius: 14px;">
+                                {{item.discountedPrice * item.count}}.00 S/.</th>
+                        </tr>
+                        }
+                        @empty {
+                        <div class="empty"> NO HAY PRODUCTOS EN TU CARRITO 🛒</div>
+                        }
+
+                    </tbody>
+                </div>
+            </div>
+            <div class="total">
+                <button style="float: left;" [disabled]="!validCount" matStepperNext>Siguente <i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <h2>Total : {{totalPrice}}.00 S/.</h2>
+            </div>
+        </mat-step>
+        <mat-step [editable]="false">
+            <ng-template matStepLabel style="pointer-events: none;">Envio</ng-template>
+            <div class="title">
+                <h1>ENVIO</h1>
+            </div>
+            <div class="containerEnvio">
+                <div class="col-resumen">
+                    <form [formGroup]="currierform">
+                        <div fxFlex fxLayout="column">
+                            @if (!authService.loggedIn()) {
+                                <mat-form-field aparence="fill" fxFlex fxLayoutAlign="space-around none">
+                                    <mat-label>Nombres</mat-label>
+                                    <input matInput formControlName="names">
+                                    @if(currierform.controls.names.touched && currierform.controls.names.invalid){
+                                    <mat-error>
+                                        @if(currierform.controls.names.required){
+                                        <span>Este campo es obligatorio</span>}
+                                        @else if(currierform.controls.names.errors.pattern){
+                                        <span>Este campo no puede contener numeros o simbolos</span>}
+                                    </mat-error> }
+                                </mat-form-field>
+                                <mat-form-field aparence="fill" fxFlex fxLayoutAlign="space-around none">
+                                    <mat-label>Apellidos</mat-label>
+                                    <input matInput formControlName="lastnames">
+                                    @if(currierform.controls.lastnames.touched && currierform.controls.lastnames.invalid){
+                                    <mat-error>
+                                        @if(currierform.controls.lastnames.required){
+                                        <span>Este campo es obligatorio</span>}
+                                        @else if(currierform.controls.lastnames.errors.pattern){
+                                        <span>Este campo no puede contener numeros o simbolos</span>}
+                                    </mat-error> }
+                                </mat-form-field>
+                            }@else {
+                                <div class="col-lg-12 mt-3 mb-3">
+                                <label class="title-name-detalle">Nombres</label>
+                                <input formControlName="names" type="text" class="form-select input-detalle" value={{user?.nombres}} readonly>
+                                </div>
+                                <div class="col-lg-12 mt-3 mb-3">
+                                    <label class="title-name-detalle" >Apellidos</label>
+                                    <input  formControlName="lastnames" type="text" class="form-select input-detalle" value={{user?.apellidos}} readonly>
+                                </div>
+                            }
+                            <div class="col-lg-12 mt-3 mb-3">
+                                <label class="title-name-detalle">Tipo de identificación</label>
+                                <select class="form-select input-detalle" aria-label="Default select example"
+                                    #typeDocument formControlName="typeDocument">
+                                    <option value="DNI">DNI</option>
+                                    <option value="RUC">RUC</option>
+                                    <option value="CDE">Carnet de extranjería</option>
+                                </select>
+                            </div>
+                            <mat-form-field aparence="fill" fxFlex fxLayoutAlign="space-around none">
+                                <mat-label>DNI/RUC/Carnet de extranjería</mat-label>
+                                <input matInput formControlName="document">
+                                @if(currierform.controls.document.touched && currierform.controls.document.invalid){
+                                <mat-error>
+                                    @if(currierform.controls.document.required){
+                                    <span>Este campo es obligatorio</span>}
+                                    @else if(currierform.controls.document.errors.pattern){
+                                    <span>Este campo es invalido</span>}
+                                </mat-error>}
+                            </mat-form-field>
+                            @if (!authService.loggedIn()) {
+                                <mat-form-field aparence="fill" fxFlex fxLayoutAlign="space-around none">
+                                    <mat-label>Correo electrónico</mat-label>
+                                    <input matInput formControlName="email">
+                                    @if(currierform.controls.email.touched && currierform.controls.email.invalid){
+                                    <mat-error>
+                                        @if(currierform.controls.email.required){
+                                        <span>Este campo es obligatorio</span>}
+                                        @else if(currierform.controls.email.errors.pattern){
+                                        <span>Este campo es invalido</span>}
+                                    </mat-error>}
+                                </mat-form-field>
+                                <mat-form-field aparence="fill" fxFlex fxLayoutAlign="space-around none">
+                                    <mat-label>telefono</mat-label>
+                                    <input matInput formControlName="contactNumber">
+                                    @if(currierform.controls.contactNumber.touched &&
+                                    currierform.controls.contactNumber.invalid){
+                                    <mat-error>
+                                        @if(currierform.controls.contactNumber.required){
+                                        <span>Este campo es obligatorio</span>}
+                                        @else if(currierform.controls.contactNumber.errors.pattern){
+                                        <span>Este campo es invalido</span>}
+                                    </mat-error>}
+                                </mat-form-field>
+                            }@else {
+                                <div class="col-lg-12 mt-3 mb-3">
+                                    <label class="title-name-detalle">Email</label>
+                                    <input formControlName="email" type="text" class="form-select input-detalle" value={{user.email}} readonly>
+                                    </div>
+                                    <div class="col-lg-12 mt-3 mb-3">
+                                        <label class="title-name-detalle">Telefono</label>
+                                        <input formControlName="contactNumber" type="text" class="form-select input-detalle" value={{user.contactNumber}} readonly>
+                                    </div>
+                            }
+                            <div class="col-lg-12 mt-3">
+                                <label class="title-name-detalle">Departamento</label>
+                                <select class="form-select input-detalle" aria-label="Default select example"
+                                    #selectedDepartamento formControlName="departamento"
+                                    (change)="obtenerProvincias(selectedDepartamento.value)">
+                                    <option value="">Seleccionar</option>
+                                    @for (departamento of departamentos; track $index) {
+                                    <option>
+                                        {{ departamento.nombre }}
+                                    </option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-lg-12 mt-3">
+                                <label class="title-name-detalle">Provincia</label>
+                                <select class="form-select input-detalle" aria-label="Default select example"
+                                    #selectedProvincia formControlName="provincia"
+                                    (change)="obtenerDistritos(selectedProvincia.value)">
+                                    <option value="" [selected]="!selectedProvincia">Seleccionar</option>
+                                    @for (provincia of provincias; track $index) {
+                                    <option>
+                                        {{ provincia }}
+                                    </option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-lg-12 mt-3">
+                                <label class="title-name-detalle">Distrito</label>
+                                <select class="form-select input-detalle" aria-label="Default select example"
+                                    #selectedDistrito formControlName="distrito">
+                                    <option value="">Seleccionar</option>
+                                    @for (distri of distrito; track $index) {
+                                    <option>
+                                        {{ distri }}
+                                    </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-resumen" style="padding: 3%;">
+                    <div>
+                        <div class="Resumen">
+                            <span style="font-size: 20px;color: rgb(0, 18, 103);">Resumen de tu compra</span>
+                            <div class="productResumen">
+                                @for (item of listItemsCar; track $index) {
+                                <div class="containerResumen">
+                                    <div class="imgResumen">
+                                        <img src="{{url+'/product/getImage/'+ item.image}}">
+                                    </div>
+                                    <div class="dataResumen">
+                                        <span
+                                            style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden; font-size: 15px; font-weight:500;">{{item.name}}</span>
+                                        <div style="padding: 5% 2% 0;">
+                                            <span
+                                                style="float: left;color:rgb(0, 18, 103);font-size: 16px;font-weight: 500;">Cantidad:
+                                                {{item.count}}</span>
+                                            <span
+                                                style="float: right; color: #0879ba;font-size: 13px;font-weight: 500;">Sub Total:
+                                                S/{{item.discountedPrice * item.count}}.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="totalResumen">
+                            <span style="float:left;font-weight: 500;">TOTAL:</span>
+                            <span style="float: right;font-weight: 500;">S/{{totalPrice}}.00</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="col-lg-12" mat-raised-button type="submit"
+                    [disabled]="!(currierform.valid && currierform.dirty)" style="margin: 5%; width: 80%;"
+                    color="primary" matStepperNext (click)="Submit()">Finalizar compra</button>
+            </div>
+        </mat-step>
+        <mat-step [editable]="false">
+            <ng-template matStepLabel>Pago</ng-template>
+            <div class="title">
+                <h1>CUENTAS BANCARIAS</h1>
+            </div>
+            <div style="margin: 4% 0 2%;text-align: center;justify-content: center;width: 100%;">
+                <h2>Su código de compra es: <strong>{{CodeSale}}</strong></h2>
+            </div>
+            <div class="cuentas">
+                <div class="cuentaInfo">
+                    <img id="imgCuenta" src="assets/cuenta/scotiabank.png"  alt="Logo">
+                    <p>
+                        <span class="textCuenta" style="margin-top: 7%;">
+                            <strong>SCOTIABANK SOLES</strong><br>
+                            <strong>704-7773184</strong>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="textCuenta">
+                            <strong>CCI</strong><br>
+                            <strong>009-405-207047773184-29</strong>
+                        </span>
+                    </p>
+                </div>
+                <div class="cuentaInfo" >
+                    <img id="imgCuenta" src="assets/cuenta/bcp.png"  alt="Logo">
+                    <p>
+                        <span class="textCuenta" style="margin-top: 7%;">
+                            <strong>BCP SOLES</strong><br>
+                            <strong>40507089002096</strong>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="textCuenta">
+                            <strong>CCI</strong><br>
+                            <strong>00240510708900209691</strong>
+                        </span>
+                    </p>
+                </div>
+                <div class="cuentaInfo">
+                    <img id="imgCuenta" src="assets/cuenta/interbank.png"  alt="Logo">
+                    <p>
+                        <span class="textCuenta" style="margin-top: 7%;">
+                            <strong>INTERBANK SOLES</strong><br>
+                            <strong>898-3185945024</strong>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="textCuenta">
+                            <strong>CCI</strong><br>
+                            <strong>003-898-013185945024-42</strong>
+                        </span>
+                    </p>
+                </div>
+                <div class="cuentaInfo">
+                    <img id="imgCuenta" src="assets/cuenta/yape.png"  alt="Logo">
+                    <p>
+                        <span class="textCuenta" style="margin-top: 7%;">
+                            <strong>YAPE</strong><br>
+                            <strong>922877870</strong>
+                        </span>
+                    </p>
+                    
+                </div>
+                <div style="margin: 4% 0 2%;text-align: center;justify-content: center;width: 100%;">
+                    <h2>Nombre:  <strong>Kevin Victor Mamani Mamani</strong></h2>
+                </div>
+                <div style="margin: 3% 0;text-align: center;justify-content: center;width: 100%;">
+                    <h3>Mandanos el comprobante al whatsaap o facebook de la tienda</h3>
+                    <div class="btn_cuenta">
+                       <button style="background: rgb(162, 255, 162);"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16" style="margin-right: 5px; color: green;"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"></path></svg></button>
+                        <button style="background: rgb(198, 221, 255);"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" style="margin-right: 5px; color: #3b5998;"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></button>
+                    </div> 
+                </div>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>

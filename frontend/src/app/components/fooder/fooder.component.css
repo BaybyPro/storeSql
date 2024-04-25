@@ -1,0 +1,60 @@
+.footer{
+   
+    background: #333;
+    width: 100%;
+    display: flex;
+    margin-top: 5%;
+    bottom: 0;
+  }
+  .col-fooder{
+    flex: 0 0 auto;
+    width: 25%;
+    padding-top: 1%;
+  }
+
+  .title-fooder{
+    font-size: 17px;
+    color: #0879ba;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 200;
+    margin-left: 8%;
+  }
+
+  .content-fooder{
+    color: #fff;
+  }
+
+  .content-fooder li{
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .fooder-categorias {
+    color: #fff;
+  }
+
+  .fooder-categorias a{
+    color:white;
+    text-decoration: none;
+  }
+
+  @media(max-width:450px){
+    
+    .col-fooder{
+        flex: 0 0 auto;
+        width: 25%;
+        padding-top: 1%;
+      }
+    ul{
+        padding-left: 5%;
+        list-style: none;
+    }
+    .title-fooder{
+        margin-left: 4%;
+        font-size: 120%;
+      }
+
+      .footer{
+        font-size: 80%;
+      }
+  }

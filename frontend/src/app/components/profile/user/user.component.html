@@ -1,0 +1,24 @@
+<div class="container component-margi2">
+  <div class="headerUser">
+    <div class="welcome">
+        <h1>HOLA!</h1>
+        <h2>{{user.name}}</h2>
+    </div>
+    <div class="points">
+        <h3>tus puntos son:</h3>
+        <span>0{{user.points}}</span>
+    </div>
+  </div>
+  <div class="containerDate" style="margin-top: 4%; display: flex;">
+    <div class="menuDate">
+        <ul>
+            <li routerLink="/user/date">Cuenta</li>
+            <li routerLink="/user/shopping">Mis pedidos</li>
+            <li (click)="authService.logout()">Cerrar sesión</li>
+        </ul>
+    </div>
+    <div class="children">
+        <router-outlet/>
+    </div>
+  </div>
+</div>

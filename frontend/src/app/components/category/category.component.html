@@ -1,0 +1,69 @@
+<div class="container component-margin2">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <span class="title-center" style="  background: #0887ba; border: 1px solid #0887ba; color: white; font-size: 25px; font-weight: 700;">Agregar categoria</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <form [formGroup]="categoryform">
+        <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Categoria</mat-label>
+            <input matInput formControlName="category">
+          </mat-form-field>
+    
+          <button mat-raised-button color="primary" type="submit" (click)="submit()" [disabled]="!(categoryform.valid && categoryform.dirty)">Agregar categoria +</button>
+    </form>
+    @if (EditCategory) {
+        <form [formGroup]="editform">
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Categoria</mat-label>
+                <input matInput formControlName="EditForm" required value="hola">
+              </mat-form-field>
+        
+              <button mat-raised-button color="accent" type="submit" (click)="update()" [disabled]="!(editform.valid && editform.dirty)">Editar Nombre</button>
+        </form>
+    }
+    
+
+    <div class="responsive_table" style="margin-top: 2%;">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+             <ng-container matColumnDef="id">
+             <th mat-header-cell *matHeaderCellDef="">ID</th>
+             <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef="">name</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action</th>
+                <td mat-cell *matCellDef="let element" class="action-link"><button mat-icon-button color="primary" matTooltip="Edit" (click)="Edit(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" matTooltip="Edit" (click)="deleteCategory(element)">
+                    <mat-icon>delete</mat-icon>
+                </button></td>
+                
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true">  </tr>
+            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+        </table>
+    </div>
+
+    @if (confirm) {
+        <div class="confirm">
+            <mat-toolbar color="warn">
+                <mat-toolbar-row>
+                    <span class="title-center">Esta seguro de borrar la categoria:<br><p style="color: rgb(235, 46, 21); text-transform: uppercase;">{{nameCategory}}</p></span>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <div>
+                <button color="warn" mat-raised-button (click)="deleteConfirm()">Confirmar</button>
+                <button mat-raised-button (click)="closeConfirm()">cerrar</button>
+            </div>>
+        </div>
+    }
+      
+</div>

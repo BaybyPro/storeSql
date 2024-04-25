@@ -1,0 +1,84 @@
+
+
+.component {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.component img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover; 
+}
+
+.body-component {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3%;
+    padding-left: 0%;
+    padding-right: 0%;
+    flex: 1 1 100%; /* Flex: grow, shrink, basis */
+    max-width: 1760px;
+    max-height: 377.5px;
+}
+
+@media screen and (min-width: 470px) {
+    .colCompo {
+        flex: 1 1 17%; /* Ajusta el ancho deseado de cada columna aquí */
+        box-sizing: border-box; /* Esto asegura que el padding no aumente el ancho de la columna */
+        padding: 10px; /* Ajusta el espaciado entre las columnas aquí */
+        margin: 0;
+        max-width: 220px;
+        min-height: 300px;
+    }
+}
+
+
+.name-component {
+    margin: 0;
+    line-height: 1.1;
+    height: 47px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    /*text-overflow: ellipsis; /* Agregapuntos suspensivos (...) si el texto es demasiado largo */ 
+}
+
+
+
+.containerPrivate{
+     margin-left: 3%;
+     min-height: 100%;
+
+}
+
+@media screen and (max-width: 469px) {
+    .colCompo {
+        flex: 1 1 50%; /* Ajusta el ancho deseado de cada columna aquí */
+        box-sizing: border-box; /* Esto asegura que el padding no aumente el ancho de la columna */
+        padding: 5px; /* Ajusta el espaciado entre las columnas aquí */
+        margin: 0;
+        max-width: 185px;
+        min-height: 300px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .colCompo {
+        flex: 1 1 50%; /* Ajusta el ancho deseado de cada columna aquí */
+        box-sizing: border-box; /* Esto asegura que el padding no aumente el ancho de la columna */
+        padding: 2px; /* Ajusta el espaciado entre las columnas aquí */
+        margin: 0;
+        max-width: 180px;
+        min-height: 300px;
+    }
+
+    .containerPrivate{
+        margin-left: 2%;
+        min-height: 9000px;
+   
+   }
+}

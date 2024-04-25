@@ -1,0 +1,21 @@
+<div class="containerPrivate component-margin2">
+    <h2><strong>Componentes para editar</strong></h2>
+    <div class="body-component">
+        
+                @for (product of products; track $index) {
+                    <div class="component"> <div class="colCompo">
+                        <a [routerLink]="['/detail',product.id]"style="text-decoration: none; color:#014f7c">
+                        @if (product.image) {<img src="{{url+'/product/getImage/'+ product.image}}"><br>}
+                        <div class="name-component"><strong>{{product.name}}</strong></div></a>
+                       <div><strong>Categoria : </strong>{{product.categoryName}}</div> 
+                       <div><strong>Precio:  </strong>S/.{{product.price}}</div> 
+                       <div><strong>Stock:  </strong> {{product.status}}</div>
+                       <div><strong>descuento:  </strong> {{product.discount}}</div>
+                    </div>
+                </div>
+                }
+                    
+        
+    </div>
+    
+</div>

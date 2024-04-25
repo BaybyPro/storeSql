@@ -1,0 +1,70 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center" style="font-weight: 700; font-size: 25px;">Registrarse</span>
+    </mat-toolbar-row>
+    
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="signupForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field appearance="fill" fxFlex fxLayoutAlign="space-around none" >
+                <mat-label>name</mat-label>
+                <input matInput formControlName="name" required>
+                @if(signupForm.controls.name.touched && signupForm.controls.name.invalid){
+                    <mat-error>
+                        @if(signupForm.controls.name.errors.required){
+                        <span>this field is mandatory</span>}
+                        @else if (signupForm.controls.name.errors.pattern) {
+                            <span>this field is invalid</span>
+                        }
+                    </mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex fxLayoutAlign="space-around none" >
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required>
+                @if(signupForm.controls.email.touched && signupForm.controls.email.invalid){
+                    <mat-error>
+                        @if(signupForm.controls.email.errors.required){
+                        <span>this field is mandatory</span>}
+                        @else if (signupForm.controls.email.errors.pattern) {
+                            <span>this field is invalid</span>
+                        }
+                    </mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex fxLayoutAlign="space-around none" >
+                <mat-label>Contac Number</mat-label>
+                <input matInput formControlName="contacNumber" required>
+                @if(signupForm.controls.contacNumber.touched && signupForm.controls.contacNumber.invalid){
+                    <mat-error>
+                        @if(signupForm.controls.contacNumber.errors.required){
+                        <span>this field is mandatory</span>}
+                        @else if (signupForm.controls.contacNumber.errors.pattern) {
+                            <span>this field is invalid</span>
+                        }
+                    </mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex fxLayoutAlign="space-around none" >
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password" required>
+                @if(signupForm.controls.password.touched && signupForm.controls.password.invalid){
+                    <mat-error>
+                        @if(signupForm.controls.password.errors.required){
+                        <span>this field is mandatory</span>}
+                        @else if (signupForm.controls.password.errors.pattern) {
+                            <span>this field is invalid</span>
+                        }
+                    </mat-error>
+                }
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button type="submit" (click)="Submit()"
+    [disabled]="!(signupForm.valid && signupForm.dirty)">Registrar</button>
+    <button mat-raised-button mat-dialog-close (click)="signin()">Atras</button>
+</mat-dialog-actions>

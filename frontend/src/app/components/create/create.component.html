@@ -1,0 +1,71 @@
+<div class="container  mt-4">
+    <div class="card component-margin2">
+      <h1 class="card-header"><strong>{{title}}</strong></h1>
+      @if (status) {
+        <div class="success">
+            {{success}}<a [routerLink]="['/detail',saveCompo.id]">aquí&nbsp;&nbsp;</a>
+            <button class="button-close" (click)="hideStatus()"><strong>x</strong></button>
+        </div>
+      }
+      <form #compoForm="ngForm" (ngSubmit)="onSubmit(compoForm)">
+        <div class="form.group">
+            <label>&nbsp;&nbsp;Name</label>
+            @if (name.touched && !name.valid) {
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;Campo requerido!</span>
+            }
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="compo.name" class="form-control"
+            required>
+        </div>
+        <div class="form.group">
+            <label>&nbsp;&nbsp;categoria</label>
+            <mat-select name="category" [(ngModel)]="compo.categoryId"  class="form-control" required>
+              @for (category of categorys; track category.id) {
+                <mat-option [value]="category.id">{{category.name}}</mat-option>
+              }
+            </mat-select>
+      </div>
+      <div class="form.group">
+        <label>&nbsp;&nbsp;precio S/.</label>
+        @if (precio.touched && !precio.valid) {
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;Campo requerido</span>
+        }
+          <input type="number" name="precio" #precio="ngModel" [(ngModel)]="compo.price"  class="form-control"
+          required>
+      </div>
+      <div class="form.group">
+        <label>&nbsp;&nbsp;stock</label>
+        @if (stock.touched && !stock.valid) {
+            <span>nbsp;&nbsp;&nbsp;&nbsp;Campo requerido</span>
+        }    
+          <input type="number" name="stock" #stock="ngModel"[(ngModel)]="compo.status" class="form-control"
+          required>
+      </div>
+      <div class="form.group">
+        <label>&nbsp;&nbsp;descuento %</label>
+        @if (precio.touched && !precio.valid) {
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;Campo requerido</span>
+        }
+          <input type="number" name="descuento" #precio="ngModel" [(ngModel)]="compo.discount"  class="form-control"
+          required>
+      </div>
+      <div class="form.group mt-4" style="display: flex;">
+            <label>&nbsp;&nbsp;image</label><br>
+            @for (image of [compo.image, compo.image2, compo.image3]; track $index) {
+              <div>
+                <div>
+                  @if (image) {
+                    <img [src]="url + '/product/getImage/' + image" style="width: 100%;">
+                  }
+                </div>
+            </div>
+            }
+          
+      </div>
+      <input type="file" name="image" (change)="fileChangeEvent($event)" multiple accept=".png, .jpg, .jpeg, .git">
+      <div>
+          <input type="submit" class="btn btn-primary mt-4" [disabled]="!compoForm.form.valid">
+      </div>
+      </form>
+    </div>
+
+  </div>

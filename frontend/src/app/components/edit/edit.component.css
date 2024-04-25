@@ -1,0 +1,17 @@
+.success{
+    width: 38%;
+   padding: 5px;
+   margin: 5px;
+   border: 1px solid #eee;
+   background: rgb(45, 132, 182);
+   color: white;
+}
+
+a{
+    color: #0dce0d;
+}
+
+.button-close{
+    background: rgb(45, 132, 182);
+    border: 0px;
+}
